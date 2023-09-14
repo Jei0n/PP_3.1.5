@@ -14,7 +14,9 @@
 <header>
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand">with role: ADMIN USER</a>
+      <span class="navbar-brand" id="navbarBrand">
+        <!--********** СКРИПТ **********-->
+        </span>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
@@ -42,10 +44,7 @@
     <div class="col-sm-10 bg-light min-vh-100 pt-3">
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="admin" role="tabpanel" aria-labelledby="admin-tab">
-          <div class="container-fluid">
-            <h1>Admin panel</h1>
-          </div>
-
+          <h1>Admin panel</h1>
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
               <button class="nav-link active" id="all-users-tab" data-bs-toggle="tab"
@@ -72,7 +71,7 @@
                   <table class="table table-striped">
                     <thead>
                     <tr>
-                      <th>Id</th>
+                      <th>ID</th>
                       <th>Username</th>
                       <th>Last Name</th>
                       <th>Age</th>
@@ -140,9 +139,7 @@
         </div>
 
         <div class="tab-pane" id="user" role="tabpanel" aria-labelledby="user-tab">
-          <div class="container-fluid">
             <h1>User information-page</h1>
-          </div>
           <div class="card">
             <div class="card-header">
               <h5><span class="align-middle">About user</span></h5>
@@ -151,9 +148,11 @@
               <table class="table table-striped">
                 <thead>
                 <tr>
-                  <th>Id</th>
+                  <th>ID</th>
                   <th>Username</th>
+                  <th>Last Name</th>
                   <th>Age</th>
+                  <th>Email</th>
                   <th>Role</th>
                 </tr>
                 </thead>
@@ -256,12 +255,16 @@
               <input readonly type="text" class="form-control" id="Username_delete">
             </div>
             <div class="mb-3">
-              <label for="age_delete" class="label">age</label>
+              <label for="lastName_delete" class="label">Last Name</label>
+              <input readonly type="text" class="form-control" id="lastName_delete">
+            </div>
+            <div class="mb-3">
+              <label for="age_delete" class="label">Age</label>
               <input readonly type="text" class="form-control" id="age_delete">
             </div>
             <div class="mb-3">
-              <label for="password_delete" class="label">Password</label>
-              <input readonly type="password" class="form-control" id="password_delete" aria-describedby="emailHelp">
+              <label for="email_delete" class="label">Email</label>
+              <input readonly type="text" class="form-control" id="email_delete">
             </div>
             <div class="mb-3">
               <label for="role_delete" class="label">Roles</label>

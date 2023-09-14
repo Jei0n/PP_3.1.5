@@ -105,15 +105,20 @@ pageUser.then((user) => {
         rol += " ";
         rol += name.role.replace("ROLE_", "");
     });
-
+    let navbar = `<b> <span>${user.email}</span></b>
+                            <span>with roles:</span>
+                            <span>${rol}</span>`;
     let result = "";
     result += `<tr>
                     <td>${user.id}</td>
                     <td>${user.username}</td>
+                    <td>${user.lastName}</td>
                     <td>${user.age}</td>
+                    <td>${user.email}</td>
                     <td>${rol}</td>
                    </tr>`;
     document.getElementById("user-table").innerHTML = result;
+    document.getElementById("navbarBrand").innerHTML = navbar;
 })
 
 
@@ -199,12 +204,14 @@ on(document, 'click', '#deleteUserBtn', e => {
     rowDelete = e.parentNode.parentNode
     document.getElementById('id_delete').value = rowDelete.children[0].innerHTML
     document.getElementById('Username_delete').value = rowDelete.children[1].innerHTML
-    document.getElementById('age_delete').value = rowDelete.children[2].innerHTML
+    document.getElementById('lastName_delete').value = rowDelete.children[2].innerHTML
+    document.getElementById('age_delete').value = rowDelete.children[3].innerHTML
+    document.getElementById('email_delete').value = rowDelete.children[4].innerHTML
 
     let option = ''
     listRoles.then(roles => {
         roles.forEach(role => {
-            if (rowDelete.children[3].innerHTML.includes(role.role.replace('ROLE_', ''))) {
+            if (rowDelete.children[5].innerHTML.includes(role.role.replace('ROLE_', ''))) {
                 option += `<option value="${role.id}">${role.role.replace('ROLE_', '')}</option>`
             }
         })
