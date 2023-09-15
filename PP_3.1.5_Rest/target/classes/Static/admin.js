@@ -6,7 +6,7 @@ const on = (element, event, selector, handler) => {
     })
 }
 
-const urlAdmin = "http://localhost:8080/api/admin/showUser"
+const urlAdmin = "http://localhost:8080/api/admin/getUser"
 currentUser = fetch(urlAdmin).then((response) => response.json())
 
 const urlAllUser = "http://localhost:8080/api/admin/"
@@ -60,7 +60,7 @@ fillRole("role_select")
 //__________________________________________________________________________________
 
 
-const urlPost = "http://localhost:8080/api/admin/add"
+const urlPost = "http://localhost:8080/api/admin/"
 
 const newUserForm = document.getElementById("newUserForm")
 document.getElementById("newUserForm")
@@ -122,7 +122,7 @@ pageUser.then((user) => {
 })
 
 
-const urlPATCH = "http://localhost:8080/api/admin/update"
+const urlPATCH = "http://localhost:8080/api/admin/"
 
 const editUserModel = new bootstrap.Modal(document.getElementById("editUserModal"))
 
@@ -194,7 +194,7 @@ formEdit.addEventListener('submit', e => {
     editUserModel.hide()
 })
 
-const urlDelete = "http://localhost:8080/api/admin/delete/"
+const urlDelete = "http://localhost:8080/api/admin/"
 
 const deleteModalBtn = new bootstrap.Modal(document.getElementById("deleteUserModal"))
 

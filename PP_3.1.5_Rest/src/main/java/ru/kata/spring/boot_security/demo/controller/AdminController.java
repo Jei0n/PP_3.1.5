@@ -1,6 +1,8 @@
 package ru.kata.spring.boot_security.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,33 +27,36 @@ public class AdminController {
     }
 
     @GetMapping("/")
-    public List<User> showAllUsers() {
-        return userService.getAllUsers();
+    public ResponseEntity<List<User>> getUsers() {
+        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
-    @GetMapping("/showUser")
-    public User showUser(Principal principal) {
-        return userService.findByUsername(principal.getName());
+    @GetMapping("/getUser")
+    public ResponseEntity<User> getCurrentUser(Principal principal) {
+        return new ResponseEntity<>(userService.findByUsername(principal.getName()), HttpStatus.OK);
     }
 
 
-    @PostMapping("/add")
-    public void create(@RequestBody User user) {
+    @PostMapping("/")
+    public ResponseEntity<HttpStatus> createUser(@RequestBody User user) {
         userService.saveUser(user);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @GetMapping("/roles")
-    public List<Role> roles() {
-        return roleService.getAllRoles();
+    public ResponseEntity<List<Role>> getRoles() {
+        return new ResponseEntity<>(roleService.getAllRoles(), HttpStatus.OK);
     }
 
-    @PatchMapping("/update")
-    public void update(@RequestBody User user) {
+    @PatchMapping("/")
+    public ResponseEntity<HttpStatus> updateUser(@RequestBody User user) {
         userService.updateUser(user);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable("id") long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") long id) {
         userService.deleteUserById(id);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 }
